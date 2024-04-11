@@ -23,6 +23,7 @@ jobs:
     name: Get Short SHA of commit for tagging Docker image
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: get SHORT_SHA
         id: get_sha
         run: |
