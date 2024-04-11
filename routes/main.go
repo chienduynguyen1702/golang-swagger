@@ -5,6 +5,7 @@ package routes
 import (
 	"os"
 
+	"github.com/chiennd172002/golang-swagger/controllers"
 	docs "github.com/chiennd172002/golang-swagger/docs"
 	"github.com/joho/godotenv"
 
@@ -33,7 +34,23 @@ func SetupV1Router() *gin.Engine {
 	// Setup routes for the API version 1
 	v1 := r.Group("/api/v1")
 	{
-		// Setup routes for
+		// Setup routes for the Lecturers
+		v1.GET("/lecturers", controllers.ListLectures)
+		v1.GET("/lecturers/:id", controllers.GetLecture)
+		v1.POST("/lecturers", controllers.CreateLecture)
+		v1.PUT("/lecturers/:id", controllers.UpdateLecture)
+		v1.DELETE("/lecturers/:id", controllers.DeleteLecture)
+		// Setup routes for the Students
+		v1.GET("/students", controllers.ListStudents)
+		v1.GET("/students/:id", controllers.GetStudent)
+		v1.POST("/students", controllers.CreateStudent)
+		v1.PUT("/students/:id", controllers.UpdateStudent)
+		v1.DELETE("/students/:id", controllers.DeleteStudent)
+		// Setup routes for the Courses
+		v1.GET("/courses", controllers.ListCourses)
+		v1.GET("/courses/:id", controllers.GetCourse)
+		v1.DELETE("/courses/:id", controllers.DeleteCourse)
+
 	}
 	// Swagger setup
 	if gin.Mode() == gin.DebugMode {
