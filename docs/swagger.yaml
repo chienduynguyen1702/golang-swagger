@@ -1,0 +1,282 @@
+definitions:
+  controllers.Course:
+    properties:
+      id:
+        type: integer
+      lectures:
+        items:
+          $ref: '#/definitions/controllers.Teacher'
+        type: array
+      name:
+        type: string
+      semester:
+        type: string
+      students:
+        items:
+          $ref: '#/definitions/controllers.Student'
+        type: array
+    type: object
+  controllers.Student:
+    properties:
+      age:
+        type: integer
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  controllers.Teacher:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/courses:
+    get:
+      description: Get all courses
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controllers.Course'
+            type: array
+      summary: List all courses
+      tags:
+      - Courses
+  /api/v1/courses/{id}:
+    delete:
+      description: Delete a course by ID
+      parameters:
+      - description: Course ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Course'
+      summary: Delete a course by ID
+      tags:
+      - Courses
+    get:
+      description: Get a course by ID
+      parameters:
+      - description: Course ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Course'
+      summary: Get a course by ID
+      tags:
+      - Courses
+  /api/v1/lectures:
+    get:
+      description: Get all lectures
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controllers.Teacher'
+            type: array
+      summary: List all lectures
+      tags:
+      - Lectures
+    post:
+      consumes:
+      - application/json
+      description: Create a lecture
+      parameters:
+      - description: Lecture object
+        in: body
+        name: lecture
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.Teacher'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controllers.Teacher'
+      summary: Create a lecture
+      tags:
+      - Lectures
+  /api/v1/lectures/{id}:
+    delete:
+      description: Delete a lecture by ID
+      parameters:
+      - description: Lecture ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a lecture by ID
+      tags:
+      - Lectures
+    get:
+      description: Get a lecture by ID
+      parameters:
+      - description: Lecture ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Teacher'
+      summary: Get a lecture by ID
+      tags:
+      - Lectures
+    put:
+      consumes:
+      - application/json
+      description: Update a lecture by ID
+      parameters:
+      - description: Lecture ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Lecture object
+        in: body
+        name: lecture
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.Teacher'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Teacher'
+      summary: Update a lecture by ID
+      tags:
+      - Lectures
+  /api/v1/students:
+    get:
+      description: Get all students
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controllers.Student'
+            type: array
+      summary: List all students
+      tags:
+      - Students
+    post:
+      consumes:
+      - application/json
+      description: Create a student
+      parameters:
+      - description: Student object
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.Student'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/controllers.Student'
+      summary: Create a student
+      tags:
+      - Students
+  /api/v1/students/{id}:
+    delete:
+      description: Delete a student by ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a student by ID
+      tags:
+      - Students
+    get:
+      description: Get a student by ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Student'
+      summary: Get a student by ID
+      tags:
+      - Students
+    put:
+      consumes:
+      - application/json
+      description: Update a student by ID
+      parameters:
+      - description: Student ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Student object
+        in: body
+        name: student
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.Student'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Student'
+      summary: Update a student by ID
+      tags:
+      - Students
+swagger: "2.0"
