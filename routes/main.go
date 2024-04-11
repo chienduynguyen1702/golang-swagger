@@ -52,14 +52,14 @@ func SetupV1Router() *gin.Engine {
 		docs.SwaggerInfo.Title = "Golang swagger Backend API"
 		docs.SwaggerInfo.Description = "This is a simple API for Golang swagger Backend."
 		docs.SwaggerInfo.Version = "1.0"
-		docs.SwaggerInfo.Host = "localhost:" + os.Getenv("PORT")
+		docs.SwaggerInfo.Host = "localhost:8080"
 		docs.SwaggerInfo.Schemes = []string{"http"}
 	} else if gin.Mode() == gin.ReleaseMode {
 		docs.SwaggerInfo.Title = "Golang swagger Backend API"
 		docs.SwaggerInfo.Description = "This is a simple API for Golang swagger Backend."
 		docs.SwaggerInfo.Version = "1.0"
-		docs.SwaggerInfo.Host = "localhost:" + os.Getenv("PORT")
-		docs.SwaggerInfo.Schemes = []string{"http"}
+		docs.SwaggerInfo.Host = "test-prj.clouding.website"
+		docs.SwaggerInfo.Schemes = []string{"https"}
 	}
 	if os.Getenv("ENABLE_SWAGGER") == "true" {
 		v1.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
