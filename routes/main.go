@@ -7,7 +7,6 @@ import (
 
 	"github.com/chiennd172002/golang-swagger/controllers"
 	docs "github.com/chiennd172002/golang-swagger/docs"
-	"github.com/joho/godotenv"
 
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
@@ -15,10 +14,6 @@ import (
 )
 
 func SetupV1Router() *gin.Engine {
-	err := godotenv.Load()
-	if err != nil {
-		panic("Error loading .env file")
-	}
 
 	r := gin.Default()
 	// CORS setup
