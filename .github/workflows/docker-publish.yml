@@ -82,4 +82,5 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         script: |
           cd /home/${{ secrets.SERVER_USERNAME }}/${{ secrets.SERVER_FOLDER }}
+          ./update-param.sh
           ./restart-docker-compose.sh
