@@ -82,5 +82,5 @@ jobs:
         port: ${{ secrets.SERVER_PORT }}
         script: |
           cd /home/${{ secrets.SERVER_USERNAME }}/${{ secrets.SERVER_FOLDER }}
-          ./get-parameters.sh -o .env
+          ./get-parameters.sh -o .env  
           ./restart-docker-compose.sh
