@@ -17,7 +17,7 @@ func main() {
 
 	r := routes.SetupV1Router()
 
-	port := "8080"
+	port := "8080" 
 
 	if port == "" {
 		log.Fatal("$PORT must be set")
